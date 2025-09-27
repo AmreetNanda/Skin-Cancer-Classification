@@ -206,7 +206,9 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
-Source/*
-venv2/*
-venv3/*
-src/skin_cancer_classifier/*
+Source/
+venv2/
+venv3/
+src/skin_disease_classifier/
+models/H5_Format/
+templates/
