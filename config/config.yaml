@@ -1,0 +1,17 @@
+artifacts_root: Artifacts
+
+data_ingestion:
+  metadata_csv: Source/HAM10000_metadata.csv
+  image_dir: Source  
+  output_csv: Artifacts/data/balanced_dataset.csv
+
+base_model:
+  input_shape: [120, 160, 3]
+  num_classes: 7
+  save_path: Artifacts/models/base_model.h5
+
+training:
+  batch_size: 32
+  epochs: 30
+  report_dir: Artifacts/reports
+  model_dir: Artifacts/models

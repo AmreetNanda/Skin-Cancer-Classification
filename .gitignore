@@ -209,7 +209,5 @@ __marimo__/
 Source/
 venv2/
 venv3/
-src/skin_disease_classifier/
 models/H5_Format/
 templates/
-config/
