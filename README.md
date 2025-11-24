@@ -1,4 +1,4 @@
-# Skin Cancer Classification App (Machine Learning + Flask + Docker)
+# Skin Cancer Classification App (Deep Learning + Flask + Docker)
 
 The Skin Cancer Classification Web App is an interactive, user-friendly tool that detects skin diseases from uploaded images using a deep learning model. This project demonstrates how a machine learning model can be integrated with a web interface to provide an intuitive experience for users who want to identify skin
 conditions quickly and accurately.
