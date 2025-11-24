@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Skin Disease Classifier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: url('https://images.unsplash.com/photo-1588776814546-f91b90c2a872?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    .overlay {
+      background: rgba(255,255,255,0.92);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 { font-size: 36px; color: #1a3e72; margin-bottom: 10px; }
+    p { font-size: 18px; margin-bottom: 20px; }
+
+    input[type="file"] {
+      padding: 12px;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      background: #f0f4ff;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    input[type="file"]:hover {
+      background: #e2e8ff;
+    }
+
+    button {
+      background: #285dc4;
+      color: white;
+      padding: 14px 22px;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #1a3e72;
+    }
+
+    .error { color: red; font-size: 16px; margin-top: 15px; }
+
+    .info-box {
+      margin-top: 40px;
+      text-align: left;
+      background: #eef5ff;
+      padding: 20px;
+      border-radius: 15px;
+      border-left: 5px solid #285dc4;
+    }
+    .info-box h2 { color: #1a3e72; font-size: 24px; margin-bottom: 15px; }
+    .info-box h3 { color: #285dc4; font-size: 20px; margin-top: 15px; margin-bottom: 5px; }
+    .info-box p { font-size: 15px; margin: 3px 0; }
+    
+    @media (max-width: 768px) {
+      .card { padding: 30px 20px; }
+      h1 { font-size: 28px; }
+      input[type="file"], button { font-size: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="overlay">
+    <div class="card">
+      <h1>🩺 AI Skin Disease Classifier</h1>
+      <p>Upload a skin image to detect possible diseases using Deep Learning.</p>
+
+      <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Predict Disease</button>
+      </form>
+
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+
+      <div class="info-box">
+        <h2>Common Skin Diseases We Detect</h2>
+
+        <h3>Vascular lesions</h3>
+        <p><strong>Symptoms:</strong> Red/purple spots, visible blood vessels.</p>
+        <p><strong>Cause:</strong> Fragile blood vessels or injury.</p>
+        <p><strong>Treatment:</strong> Laser therapy, sclerotherapy.</p>
+
+        <h3>Actinic keratoses</h3>
+        <p><strong>Symptoms:</strong> Rough, scaly patches.</p>
+        <p><strong>Cause:</strong> UV exposure, sun damage.</p>
+        <p><strong>Treatment:</strong> Cryotherapy, topical medication.</p>
+
+        <h3>Basal cell carcinoma</h3>
+        <p><strong>Symptoms:</strong> Pearly bumps, open sores.</p>
+        <p><strong>Cause:</strong> UV-induced DNA damage.</p>
+        <p><strong>Treatment:</strong> Surgical removal, Mohs surgery.</p>
+
+        <h3>Benign keratosis-like lesions</h3>
+        <p><strong>Symptoms:</strong> Waxy, wart-like growths.</p>
+        <p><strong>Cause:</strong> Non-cancerous skin changes.</p>
+        <p><strong>Treatment:</strong> Cosmetic removal if desired.</p>
+
+        <h3>Dermatofibroma</h3>
+        <p><strong>Symptoms:</strong> Firm, small nodules.</p>
+        <p><strong>Cause:</strong> Minor skin injuries.</p>
+        <p><strong>Treatment:</strong> None unless symptomatic.</p>
+
+        <h3>Melanocytic nevi</h3>
+        <p><strong>Symptoms:</strong> Dark, round/oval spots (moles).</p>
+        <p><strong>Cause:</strong> Accumulation of melanocytes.</p>
+        <p><strong>Treatment:</strong> Monitor; remove if necessary.</p>
+
+        <h3>Melanoma</h3>
+        <p><strong>Symptoms:</strong> Irregular dark moles, bleeding spots.</p>
+        <p><strong>Cause:</strong> UV damage, genetics.</p>
+        <p><strong>Treatment:</strong> Surgery, immunotherapy, radiation.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

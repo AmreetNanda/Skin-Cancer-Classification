@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Skin Disease Prediction Result</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: url('https://images.unsplash.com/photo-1588776814546-f91b90c2a872?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    .overlay {
+      background: rgba(255,255,255,0.92);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 { font-size: 36px; color: #1a3e72; margin-bottom: 15px; }
+    p { font-size: 18px; margin-bottom: 12px; }
+
+    .uploaded-img { width: 280px; border-radius: 15px; margin: 20px 0; }
+
+    .prediction {
+      font-size: 24px;
+      font-weight: bold;
+      color: #285dc4;
+      margin-bottom: 5px;
+    }
+
+    .confidence {
+      font-size: 20px;
+      color: #1a3e72;
+      margin-bottom: 25px;
+    }
+
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .disease-card {
+      background: #f0f4ff;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .disease-card.highlight {
+      border: 3px solid #285dc4;
+      background: #dce6ff;
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    .disease-card h3 { font-size: 20px; margin-bottom: 8px; color: #1a3e72; }
+    .disease-card p { font-size: 14px; margin-bottom: 5px; color: #333; }
+    .prob { font-weight: bold; color: #285dc4; }
+
+    a.button {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 14px 22px;
+      background: #1a3e72;
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+    a.button:hover { background: #12406a; }
+
+    @media (max-width: 768px) {
+      .card { padding: 30px 20px; }
+      h1 { font-size: 28px; }
+      .prediction, .confidence { font-size: 18px; }
+      .uploaded-img { width: 200px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="overlay">
+    <div class="card">
+      <h1>Skin Disease Prediction Result</h1>
+      <p><strong>Uploaded Image:</strong> {{ filename }}</p>
+      <img src="{{ url_for('static', filename='uploads/' + filename) }}" class="uploaded-img">
+
+      <div class="prediction">
+        Predicted Disease: {{ prediction }}
+      </div>
+      <div class="confidence">
+        Confidence: {{ confidence }}%
+      </div>
+
+      <h2>🩺 Disease Information & Predictions</h2>
+      <div class="cards-container">
+
+        <!-- Disease Cards -->
+        <div class="disease-card {% if prediction == 'Vascular lesions' %}highlight{% endif %}">
+          <h3>Vascular lesions</h3>
+          <p><strong>Symptoms:</strong> Red/purple spots, visible vessels.</p>
+          <p><strong>Cause:</strong> Fragile blood vessels.</p>
+          <p><strong>Treatment:</strong> Laser therapy, sclerotherapy.</p>
+        </div>
+
+        <div class="disease-card {% if prediction == 'Actinic keratoses' %}highlight{% endif %}">
+          <h3>Actinic keratoses</h3>
+          <p><strong>Symptoms:</strong> Rough, scaly patches.</p>
+          <p><strong>Cause:</strong> UV exposure.</p>
+          <p><strong>Treatment:</strong> Cryotherapy, topical meds.</p>
+        </div>
+
+        <div class="disease-card {% if prediction == 'Basal cell carcinoma' %}highlight{% endif %}">
+          <h3>Basal cell carcinoma</h3>
+          <p><strong>Symptoms:</strong> Pearly bumps, open sores.</p>
+          <p><strong>Cause:</strong> UV-induced DNA damage.</p>
+          <p><strong>Treatment:</strong> Surgical excision, Mohs surgery.</p>
+        </div>
+
+        <div class="disease-card {% if prediction == 'Benign keratosis-like lesions' %}highlight{% endif %}">
+          <h3>Benign keratosis-like lesions</h3>
+          <p><strong>Symptoms:</strong> Waxy, wart-like growths.</p>
+          <p><strong>Cause:</strong> Non-cancerous skin changes.</p>
+          <p><strong>Treatment:</strong> Usually none; cosmetic removal optional.</p>
+        </div>
+
+        <div class="disease-card {% if prediction == 'Dermatofibroma' %}highlight{% endif %}">
+          <h3>Dermatofibroma</h3>
+          <p><strong>Symptoms:</strong> Firm, small nodules.</p>
+          <p><strong>Cause:</strong> Minor skin injuries.</p>
+          <p><strong>Treatment:</strong> None unless symptomatic; surgery possible.</p>
+        </div>
+
+        <div class="disease-card {% if prediction == 'Melanocytic nevi' %}highlight{% endif %}">
+          <h3>Melanocytic nevi (Moles)</h3>
+          <p><strong>Symptoms:</strong> Dark, round/oval spots.</p>
+          <p><strong>Cause:</strong> Melanocyte accumulation; genetic.</p>
+          <p><strong>Treatment:</strong> Monitor; remove if necessary.</p>
+        </div>
+
+        <div class="disease-card {% if prediction == 'Melanoma' %}highlight{% endif %}">
+          <h3>Melanoma</h3>
+          <p><strong>Symptoms:</strong> Irregular dark moles, bleeding spots.</p>
+          <p><strong>Cause:</strong> UV damage, genetics.</p>
+          <p><strong>Treatment:</strong> Surgery, immunotherapy, radiation.</p>
+        </div>
+
+      </div>
+
+      <a href="/" class="button">🔄 Classify Another Image</a>
+    </div>
+  </div>
+</body>
+</html>
