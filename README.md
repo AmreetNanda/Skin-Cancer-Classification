@@ -151,7 +151,9 @@ Open: 👉 http://localhost:8501
 ##### Form 
 ![App Screenshot](https://github.com/AmreetNanda/Skin-Cancer-Classification/blob/main/Skin_Cancer_Classification_1.png)
 
+## Demo 1
+https://github.com/user-attachments/assets/33e033df-f710-4fde-b8af-97195e38e1a9
 
-## Demo
+## Demo 2
 https://github.com/user-attachments/assets/4396ed1e-179f-4773-8822-de5c0331438a
 
