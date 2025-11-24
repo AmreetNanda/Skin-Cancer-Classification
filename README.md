@@ -153,6 +153,5 @@ Open: 👉 http://localhost:8501
 
 
 ## Demo
-https://github.com/user-attachments/assets/6f5331eb-1b69-4d8f-9524-f1543f2b1b7a
 https://github.com/user-attachments/assets/4396ed1e-179f-4773-8822-de5c0331438a
 
